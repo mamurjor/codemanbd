@@ -1,7 +1,30 @@
 <?php
 session_start();
 
+
+
+
+
 if(isset($_SESSION['username'])){
+
+
+
+
+
+$id = $_GET['id'];
+
+$link = mysqli_connect("localhost","root","","codemanbd");
+
+
+
+
+$query = "SELECT * FROM user_registration WHERE id = $id";
+
+
+$result=mysqli_query($link,$query);
+
+$row=mysqli_fetch_assoc($result);
+
 
 
 
@@ -55,16 +78,40 @@ include("header.php");
                       <div class="card-body">
                         <h4 class="card-title">Default form</h4>
                         <p class="card-description"> Basic form layout </p>
-                        <form action="save-category.php" method="post" class="forms-sample">
+                        <form action="user-update.php?id=<?php echo $row['id'];?>" method="post" class="forms-sample">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email">
+                            <label for="exampleInputEmail1">username</label>
+                            <input type="text" class="form-control" value="<?php echo $row['username'];?>" name="username" id="exampleInputEmail1" placeholder="Enter email">
                           </div>
+
                           <div class="form-group">
-                            <label for="exampleInputPassword1">Code</label>
-                            <input type="text" class="form-control" name="code" id="exampleInputPassword1" placeholder="Password">
+                            <label for="exampleInputEmail1">email</label>
+                            selct id, name from category where id ='';
+                            <label for="cars">Choose a car:</label>
+<select  name="cars" id="cars">
+  <optgroup label="Swedish Cars">
+
+    <option selected > hadi</option>
+
+    <option value="saab">Saab</option>
+  </optgroup>
+
+</select>
+
+                            <input type="text" class="form-control" value="<?php echo $row['catid'];?>" name="email" id="exampleInputEmail1" placeholder="Enter email">
                           </div>
-                          <button type="submit" class="btn btn-success mr-2">Submit</button>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">cell</label>
+                            <input type="text" class="form-control" value="<?php echo $row['cell'];?>" name="cell" id="exampleInputEmail1" placeholder="Enter email">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">address</label>
+                            <input type="text" class="form-control" value="<?php echo $row['address'];?>" name="address" id="exampleInputEmail1" placeholder="Enter email">
+                          </div>
+                      
+                          <button type="submit" class="btn btn-success mr-2">Update</button>
                           <button class="btn btn-light">Cancel</button>
                         </form>
                       </div>

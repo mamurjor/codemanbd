@@ -1,39 +1,5 @@
 <?php
 
-
-
-// $servername = "localhost";
-// $username = "username";
-// $password = "password";
-
-
-/*
-
-INSERT INTO user_registration(username,password,email,cell,address,birthdate)
-VALUES ("test","tsta","asdf","adsfa","dhaka","1990-01-04")
-*/
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-$email = $_POST['email'];
-$cell = $_POST['cell'];
-$address = $_POST['address'];
-$birthdate = $_POST['birthdate'];
-
-$otpcode = rand(10,100);
-
-include("config.php");
-$query ="INSERT INTO user_registration(username,password,email,cell,address,birthdate,otpcode) 
-VALUES ('$username','$password','$email','$cell','$address','$birthdate',$otpcode)";
-
-
-DataSave($link,$query);
-
-
-
-
-// Email Verification Start
-
 use PHPMailer\PHPMailer\PHPMailer; 
 
 use PHPMailer\PHPMailer\Exception;
@@ -73,7 +39,7 @@ use PHPMailer\PHPMailer\Exception;
 
             $mail->setFrom('monlinebatch@gmail.com', "Sender"); // sender's email and name
 
-            $mail->addAddress($email, "codemanbd");  // receiver's email and name
+            $mail->addAddress("mdsabbir477470@gmail.com", "codemanbd");  // receiver's email and name
 
             $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
 
@@ -344,7 +310,7 @@ use PHPMailer\PHPMailer\Exception;
                                 <table border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                       <td> <a href=http://localhost/codemanecom/verify.php?otpcode='<?php echo  $otpcode;?>' target="_blank">confirm email <?php echo  $otpcode;?></a> </td> 
+                                      <!-- <td> <a href=http://localhost/verification/verify.php?code='<?php echo  $code;?>' target="_blank">confirm email</a> </td> -->
                                     </tr>
                                   </tbody>
                                 </table>
@@ -400,12 +366,7 @@ use PHPMailer\PHPMailer\Exception;
 
         }
 
-
-
-//Email Verification End
-
-
-
+  
 
 
 

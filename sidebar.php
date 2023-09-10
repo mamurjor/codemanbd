@@ -60,6 +60,13 @@
               </div>
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link" href="add-new-product.php">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">Add New Product</span>
+              </a>
+            </li>
+
 
          
             <li class="nav-item">
